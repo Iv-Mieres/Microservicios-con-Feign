@@ -22,18 +22,18 @@ public class PacienteController {
 	private IPacienteService pacienteService;
 	
 	
-	@PostMapping()
+	@PostMapping("/crear")
 	public ResponseEntity<HttpStatus> guardarPaciente(@RequestBody PacienteDTO paciente){
 		pacienteService.guardarPaciente(paciente);
 		return new ResponseEntity<HttpStatus>(HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/ver/{id}")
 	public ResponseEntity<PacienteDTO> VERPaciente(@PathVariable long id){
 		return ResponseEntity.status(HttpStatus.OK).body(pacienteService.verPacientePorId(id));
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/eliminar/{id}")
 	public ResponseEntity<HttpStatus> guardarPaciente(@PathVariable Long id){
 		pacienteService.eliminarPaciente(id);
 		return new ResponseEntity<HttpStatus>(HttpStatus.OK);
